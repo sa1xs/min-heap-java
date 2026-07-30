@@ -43,6 +43,57 @@ public class MinHeap {
     }
 
     /**
+     * Intercambia dos elementos dentro del montículo.
+     *
+     * @param indiceA índice del primer elemento
+     * @param indiceB índice del segundo elemento
+     */
+    private void intercambiar(int indiceA, int indiceB) {
+        int temporal = monticulo.get(indiceA);
+
+        monticulo.set(indiceA, monticulo.get(indiceB));
+        monticulo.set(indiceB, temporal);
+    }
+
+    /**
+     * Inserta un valor en el montículo mínimo.
+     *
+     * @param valor valor que se desea insertar
+     */
+    public void insertar(int valor) {
+        // Se agrega al final para conservar la forma completa del montículo.
+        monticulo.add(valor);
+
+        // El último índice corresponde al valor recién insertado.
+        int indiceNuevo = monticulo.size() - 1;
+
+        // Se sube el elemento hasta restaurar la propiedad del Min-Heap.
+        upHeapify(indiceNuevo);
+    }
+
+    /**
+     * Sube recursivamente un elemento mientras sea menor que su padre.
+     *
+     * @param indice índice actual del elemento
+     */
+    private void upHeapify(int indice) {
+        // Caso base: el elemento alcanzó la cima.
+        if (indice == 0) {
+            return;
+        }
+
+        int indicePadre = obtenerIndicePadre(indice);
+
+        // Si el hijo es menor que el padre, ambos están desordenados.
+        if (monticulo.get(indice) < monticulo.get(indicePadre)) {
+            intercambiar(indice, indicePadre);
+
+            // El elemento continúa siendo evaluado desde su nueva posición.
+            upHeapify(indicePadre);
+        }
+    }
+
+    /**
      * Muestra el contenido actual del montículo.
      */
     public void mostrar() {

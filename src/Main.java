@@ -1,11 +1,14 @@
 public class Main {
 
     public static void main(String[] args) {
-
-        // Creamos un Min-Heap inicialmente vacío.
         MinHeap minHeap = new MinHeap();
 
-        // Prueba básica para confirmar que el proyecto funciona.
+        // Prueba de inserción y upHeapify.
+        minHeap.insertar(10);
+        minHeap.insertar(4);
+        minHeap.insertar(7);
+        minHeap.insertar(1);
+
         minHeap.mostrar();
     }
 }
