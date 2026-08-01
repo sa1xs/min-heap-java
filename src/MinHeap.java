@@ -103,6 +103,36 @@ public class MinHeap {
     }
 
     /**
+     * Baja recursivamente un elemento hasta restaurar
+     * la propiedad del montículo mínimo.
+     *
+     * @param indice índice actual del elemento
+     */
+    private void downHeapify(int indice) {
+        int indiceIzquierdo = obtenerIndiceIzquierdo(indice);
+        int indiceDerecho = obtenerIndiceDerecho(indice);
+        int indiceMenor = indice;
+
+        // Comprueba si el hijo izquierdo existe y es menor.
+        if (indiceIzquierdo < monticulo.size()
+                && monticulo.get(indiceIzquierdo) < monticulo.get(indiceMenor)) {
+            indiceMenor = indiceIzquierdo;
+        }
+
+        // Comprueba si el hijo derecho existe y es menor.
+        if (indiceDerecho < monticulo.size()
+                && monticulo.get(indiceDerecho) < monticulo.get(indiceMenor)) {
+            indiceMenor = indiceDerecho;
+        }
+
+        // Si alguno de los hijos es menor, se intercambia y continúa.
+        if (indiceMenor != indice) {
+            intercambiar(indice, indiceMenor);
+            downHeapify(indiceMenor);
+        }
+    }
+
+    /**
      * Retorna el elemento mínimo sin eliminarlo.
      *
      * @return elemento ubicado en la cima del montículo
@@ -115,6 +145,37 @@ public class MinHeap {
         }
 
         return monticulo.get(0);
+    }
+
+    /**
+     * Elimina y retorna el elemento mínimo del montículo.
+     *
+     * @return elemento que estaba ubicado en la cima
+     * @throws IllegalStateException si el montículo está vacío
+     */
+    public int eliminarMin() {
+        if (monticulo.isEmpty()) {
+            throw new IllegalStateException("El montículo está vacío.");
+        }
+
+        // Guardamos el mínimo antes de modificar la estructura.
+        int minimo = monticulo.get(0);
+        int ultimoIndice = monticulo.size() - 1;
+
+        // Caso especial: el montículo contiene un único elemento.
+        if (ultimoIndice == 0) {
+            monticulo.remove(0);
+            return minimo;
+        }
+
+        // Eliminamos el último elemento y lo colocamos en la cima.
+        int ultimoElemento = monticulo.remove(ultimoIndice);
+        monticulo.set(0, ultimoElemento);
+
+        // Restauramos la propiedad del Min-Heap.
+        downHeapify(0);
+
+        return minimo;
     }
 
     /**
