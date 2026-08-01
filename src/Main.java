@@ -6,9 +6,8 @@ public class Main {
     public static void main(String[] args) {
         MinHeap minHeap = new MinHeap();
 
-        // Scanner se utiliza para leer las opciones y valores del usuario.
         try (Scanner scanner = new Scanner(System.in)) {
-            ejecutarMenu(scanner, minHeap);
+            menu(scanner, minHeap);
         }
     }
 
@@ -18,7 +17,7 @@ public class Main {
      * @param scanner lector de entradas del usuario
      * @param minHeap estructura que será administrada
      */
-    private static void ejecutarMenu(Scanner scanner, MinHeap minHeap) {
+    private static void menu(Scanner scanner, MinHeap minHeap) {
         int opcion;
 
         do {
