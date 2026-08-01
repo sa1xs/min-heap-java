@@ -13,6 +13,15 @@ public class MinHeap {
     }
 
     /**
+     * Indica si el montículo no contiene elementos.
+     *
+     * @return true si está vacío; false en caso contrario
+     */
+    public boolean estaVacio() {
+        return monticulo.isEmpty();
+    }
+
+    /**
      * Calcula el índice del padre de un elemento.
      *
      * @param indice posición actual del elemento
@@ -91,6 +100,21 @@ public class MinHeap {
             // El elemento continúa siendo evaluado desde su nueva posición.
             upHeapify(indicePadre);
         }
+    }
+
+    /**
+     * Retorna el elemento mínimo sin eliminarlo.
+     *
+     * @return elemento ubicado en la cima del montículo
+     * @throws IllegalStateException si el montículo está vacío
+     */
+    public int peek() {
+        // No se puede consultar la cima de una estructura vacía.
+        if (monticulo.isEmpty()) {
+            throw new IllegalStateException("El montículo está vacío.");
+        }
+
+        return monticulo.get(0);
     }
 
     /**
