@@ -1,23 +1,23 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
         MinHeap minHeap = new MinHeap();
 
-        minHeap.insertar(10);
-        minHeap.insertar(4);
-        minHeap.insertar(7);
-        minHeap.insertar(1);
+        // Lista desordenada utilizada para probar heapify.
+        ArrayList<Integer> elementos = new ArrayList<>(
+                Arrays.asList(9, 4, 7, 1, 3, 6, 2)
+        );
 
-        System.out.print("Montículo inicial: ");
+        System.out.println("Lista original: " + elementos);
+
+        minHeap.heapify(elementos);
+
+        System.out.print("Min-Heap resultante: ");
         minHeap.mostrar();
 
-        int eliminado = minHeap.eliminarMin();
-
-        System.out.println("Elemento eliminado: " + eliminado);
-
-        System.out.print("Montículo después de eliminar: ");
-        minHeap.mostrar();
-
-        System.out.println("Nuevo mínimo: " + minHeap.peek());
+        System.out.println("Elemento mínimo: " + minHeap.peek());
     }
 }

@@ -179,6 +179,31 @@ public class MinHeap {
     }
 
     /**
+     * Reemplaza el contenido actual y convierte una lista
+     * desordenada en un montículo mínimo válido.
+     *
+     * @param elementos valores que formarán el nuevo montículo
+     */
+    public void heapify(ArrayList<Integer> elementos) {
+        // Sustituye el contenido anterior del montículo.
+        monticulo.clear();
+        monticulo.addAll(elementos);
+
+        // Las listas vacías y de un elemento ya son montículos válidos.
+        if (monticulo.size() <= 1) {
+            return;
+        }
+
+        // El último padre se encuentra antes de la primera hoja.
+        int ultimoPadre = (monticulo.size() / 2) - 1;
+
+        // Ordena desde el último padre hasta la cima.
+        for (int indice = ultimoPadre; indice >= 0; indice--) {
+            downHeapify(indice);
+        }
+    }
+
+    /**
      * Muestra el contenido actual del montículo.
      */
     public void mostrar() {
