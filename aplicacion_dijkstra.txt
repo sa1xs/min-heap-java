@@ -1,0 +1,19 @@
+Uso del Min-Heap en el algoritmo de Dijkstra
+
+El algoritmo de Dijkstra se utiliza para encontrar las rutas más cortas desde un
+vértice de origen hacia los demás vértices de un grafo con pesos no negativos.
+
+Durante su ejecución, el algoritmo necesita seleccionar repetidamente el vértice
+que tenga la menor distancia conocida desde el origen. Un Min-Heap permite realizar
+esta selección de manera eficiente, ya que mantiene el elemento con menor prioridad
+en la cima de la estructura.
+
+En este caso, la prioridad de cada vértice corresponde a su distancia acumulada.
+Cuando se extrae el elemento mínimo del montículo, se procesa el vértice con la
+distancia más corta conocida. Después se revisan sus conexiones y, cuando se
+encuentra una ruta más corta hacia otro vértice, se actualiza su distancia y se
+incorpora nuevamente al montículo.
+
+El uso de un Min-Heap evita tener que recorrer todos los vértices para buscar
+manualmente la distancia menor en cada iteración, haciendo que el algoritmo de
+Dijkstra sea más eficiente, especialmente en grafos grandes.
