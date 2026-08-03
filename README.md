@@ -45,3 +45,50 @@ Responsible for:
 - ArrayList
 - Git
 - GitHub
+
+## Features
+
+- Insert elements into the Min-Heap.
+- Retrieve the minimum element without removing it.
+- Remove the minimum element.
+- Convert an unordered list into a valid Min-Heap.
+- Display the current heap.
+- Accept duplicate values.
+- Validate invalid console input.
+- Handle empty heaps safely.
+
+## Project Structure
+
+```text
+min-heap-java/
+├── src/
+│   ├── Main.java
+│   └── MinHeap.java
+├── aplicacion_dijkstra.txt
+├── README.md
+└── .gitignore
+```
+
+## How to Run
+
+### IntelliJ IDEA
+
+1. Open the project in IntelliJ IDEA.
+2. Mark the `src` directory as **Sources Root**.
+3. Open `Main.java`.
+4. Run the `main` method.
+
+## Menu Options
+
+The console menu provides the following operations:
+
+1. Insert an element.
+2. Remove the minimum element.
+3. View the minimum element.
+4. Convert a list into a Min-Heap.
+5. Display the current heap.
+6. Exit the program.
+
+## Dijkstra Application
+
+The file `aplicacion_dijkstra.txt` explains how a Min-Heap is used by Dijkstra's algorithm to efficiently select the vertex with the smallest known distance.
